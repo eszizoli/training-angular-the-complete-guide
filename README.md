@@ -25,3 +25,19 @@ Running the code:
 
 1. Install dependencies: `npm install`
 2. Run the development server: `npm start` or `ng serve`
+
+## Using Angular CLI
+
+|Description                 |Script                   |Comment                                  |
+|----------------------------|-------------------------|-----------------------------------------|
+|Create a new project        |`ng new <app-name>`      |A new folder will be created for project.|
+|Generate a new component    |`ng g c <component-name>`|                                         |
+
+## Working with Angular features
+
+### Template functions
+
+|Description                      |Script                         |
+|---------------------------------|-------------------------------|
+|Binding with string interpolation|`{{ object.property }}`        |
+|Property binding                 |`<img [src]="object.property">`|
