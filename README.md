@@ -33,12 +33,22 @@ Running the code:
 |Create a new project        |`ng new <app-name>`      |A new folder will be created for project.|
 |Generate a new component    |`ng g c <component-name>`|                                         |
 
-## Working with Angular features
+## Working with Angular
 
-### Template functions
+Angular uses component base separation. How to connect components together:
+![How to connect components together](images/understanding-components.png)
+
+### Template features
 
 |Description                      |Script                         |
 |---------------------------------|-------------------------------|
 |Binding with string interpolation|`{{ object.property }}`        |
 |Property binding                 |`<img [src]="object.property">`|
 |Event binding                    |`<button (click)="onClick()" >`|
+
+### Change detection mechanism
+
+Under the hood, Angular uses zone.js for change detection, error handling, async tracking.  
+Zone.js notifies Angular about user events, expired timers, etc.  
+When a new event occurs, Angular checks for changes for all components in the order of hierarchy levels, from the root app component to the last component.
+![Change detection](images/change-detection.png)
