@@ -41,3 +41,4 @@ Running the code:
 |---------------------------------|-------------------------------|
 |Binding with string interpolation|`{{ object.property }}`        |
 |Property binding                 |`<img [src]="object.property">`|
+|Event binding                    |`<button (click)="onClick()" >`|
