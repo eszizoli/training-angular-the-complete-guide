@@ -38,13 +38,16 @@ Running the code:
 Angular uses component base separation. How to connect components together:
 ![How to connect components together](images/understanding-components.png)
 
-### Template features
+### Data binding in template
 
-|Description                      |Script                         |
-|---------------------------------|-------------------------------|
-|Binding with string interpolation|`{{ object.property }}`        |
-|Property binding                 |`<img [src]="object.property">`|
-|Event binding                    |`<button (click)="onClick()" >`|
+```html
+<div>
+  <button (click)="onClick()" > <!-- Event binding -->
+    <img [src]="imagePath" [alt]="name" /> <!-- Property binding -->
+    <span>{{ name }}</span> <!-- Binding with string interpolation -->
+  </button>
+</div>
+```
 
 ### Change detection mechanism
 
@@ -68,7 +71,7 @@ Angular manages subscriptions to the signal to get notified about changes. When 
 
 Using Signals in code:
 
-```js
+```ts
 // import
 import { signal } from '@angular/core';
 
@@ -85,4 +88,23 @@ const name = selectedUser().name;
 const imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 ```
 
-Binding in template: `<div>{{ selectedUser().name }}</div>`
+Binding in template:
+
+```html
+<div>{{ selectedUser().name }}</div>
+```
+
+### Component Inputs
+
+Using property decorator to create an input for component:
+
+```ts
+// using required option if it is mandatory to use in the parent template
+@Input({ required: true }) name!: string;
+```
+
+Passing data with property binding from a parent component:
+
+```html
+<app-user [name]="users[0].name" />
+```
