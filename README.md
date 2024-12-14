@@ -48,7 +48,41 @@ Angular uses component base separation. How to connect components together:
 
 ### Change detection mechanism
 
-Under the hood, Angular uses zone.js for change detection, error handling, async tracking.  
+#### Zone.js
+
+Under the hood, Angular uses zone.js by default for change detection, error handling, async tracking.  
 Zone.js notifies Angular about user events, expired timers, etc.  
-When a new event occurs, Angular checks for changes for all components in the order of hierarchy levels, from the root app component to the last component.
+When a new event occurs, Angular checks for changes for all components within a zone in the order of hierarchy levels, from the root app component to the last component.
 ![Change detection](images/change-detection.png)
+
+A zone related to a component hierarchy which connected to a page.
+
+#### Signals
+
+There is another option for updating state. Using **Signals** to notify Angular about value changes and required UI updates.  
+Signals has supported since Angular 16.
+
+A signal is an object that stores a value (any type of value, including nested objects).
+
+Angular manages subscriptions to the signal to get notified about changes. When a change occurs, Angular is then **able to update the part of the UI** that needs updating.
+
+Using Signals in code:
+
+```js
+// import
+import { signal } from '@angular/core';
+
+// create a new signal object
+selectedUser = signal(USERS[index]);
+
+// set/change value
+selectedUser.set(USERS[2]);
+
+// get value
+const name = selectedUser().name;
+
+// computed value based on a signal
+const imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+```
+
+Binding in template: `<div>{{ selectedUser().name }}</div>`
