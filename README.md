@@ -187,3 +187,15 @@ onSelectUser() { this.select.emit(this.id); }
 
 It is not a Signal! The same event will be created as with Output decorator, but with this solution the Output decorator can be omitted.  
 It is recommended to use this then input signal was used.
+
+### Outputting Content
+
+Using **for** to outputting list content (in HTML template):
+
+```ts
+@for (user of users; track user.id) {
+  <li>
+    <app-user [user]="user" (select)="onSelectUser($event)" />
+  </li>
+}
+```
