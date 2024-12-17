@@ -209,3 +209,13 @@ Using **@if** conditional content (in HTML template):
   <p id="fallback">Select a user to see their tasks!</p>
 }
 ```
+
+### Separate data models
+
+It is recommended to use a separate model files for each components according to the command pattern.
+
+- create a separate model file: `<component-name>.model.ts`
+- add `export` key word for each type and interfaces in the model file
+- import model file with `type` keyword in components where the model is needed
+
+![Separate data model](images/separate-data-model.png)
