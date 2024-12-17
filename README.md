@@ -147,6 +147,7 @@ Using property decorator to create an output to notify a parent component about 
 ```ts
 // create event with Output decorator
 @Output() select = new EventEmitter();
+@Output() select = new EventEmitter<string>(); // it should recommended to define type of event argument
 
 // emit event
 onSelectUser() {
