@@ -219,3 +219,22 @@ It is recommended to use a separate model files for each components according to
 - import model file with `type` keyword in components where the model is needed
 
 ![Separate data model](images/separate-data-model.png)
+
+### CSS styling with Class Bindings
+
+Using CSS Class bindings to dynamically change CSS styling based on data state.
+
+```ts
+// create a new boolean property to control CSS styling in typescript file
+@Input({ required: true }) selected!: boolean;
+
+// add CSS styling to CSS file
+button:active,
+.active { ... }
+
+// add class binding to template file
+<button [class.active]="selected" ... />
+
+// pass state via property binding from template file of a parent component
+<app-user [selected]="user.id === selectedUserId" ... />
+```
