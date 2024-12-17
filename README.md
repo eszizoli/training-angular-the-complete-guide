@@ -28,10 +28,10 @@ Running the code:
 
 ## Using Angular CLI
 
-|Description                 |Script                   |Comment                                  |
-|----------------------------|-------------------------|-----------------------------------------|
-|Create a new project        |`ng new <app-name>`      |A new folder will be created for project.|
-|Generate a new component    |`ng g c <component-name>`|                                         |
+|Description                 |Script                   |Comment                                               |
+|----------------------------|-------------------------|------------------------------------------------------|
+|Create a new project        |`ng new <app-name>`      |A new folder will be created for project.             |
+|Generate a new component    |`ng g c <component-name>`|To skip *.spec file generation use option --skip-tests|
 
 ## Working with Angular
 
