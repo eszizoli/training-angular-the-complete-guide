@@ -127,3 +127,14 @@ Passing data with property binding from a parent component:
 ```html
 <app-user [name]="users[0].name" />
 ```
+
+#### Signal Inputs
+
+Using Signals instead of input decorator:
+
+```ts
+// input data container via Signals
+name = input.required<string>();
+propertyWithDefaultValue = input('defaultValue');
+optionalProperty = input<number>();
+```
