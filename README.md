@@ -238,3 +238,26 @@ button:active,
 // pass state via property binding from template file of a parent component
 <app-user [selected]="user.id === selectedUserId" ... />
 ```
+
+### Using Directives & Two-Way-Binding
+
+Two-Way-Binding with Angular Forms module:
+
+```ts
+// import FormsModule
+import { FormsModule } from '@angular/forms';
+
+// register FormsModule
+@Component({
+  imports: [FormsModule],
+  ...
+})
+
+// create a new property for store form data
+enteredData = '';
+
+// bind enteredData with ngModel
+<form>
+  <input type="text" id="data" name="data" [(ngModel)]="enteredData" />
+</form>
+```
