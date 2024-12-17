@@ -38,20 +38,35 @@ Running the code:
 Angular uses component base separation. How to connect components together:
 ![How to connect components together](images/understanding-components.png)
 
-### Data binding in template
+### Data binding and change detection
+
+#### Change detection mechanism by Zone.js
+
+```ts
+// create a public property
+selectedUser = USERS[index];
+
+// use getter to create a property with calculated data
+get imagePath() {
+  return 'assets/users/' + this.selectedUser.avatar;
+}
+
+// handler user event in code
+onSelectUser() {
+  console.log('Clicked');
+}
+```
+
+Data binding in template:
 
 ```html
 <div>
-  <button (click)="onClick()" > <!-- Event binding -->
-    <img [src]="imagePath" [alt]="name" /> <!-- Property binding -->
-    <span>{{ name }}</span> <!-- Binding with string interpolation -->
+  <button (click)="onSelectUser()" > <!-- Event binding -->
+    <img [src]="imagePath" [alt]="selectedUser.name" /> <!-- Property binding -->
+    <span>{{ selectedUser.name }}</span> <!-- Binding with string interpolation -->
   </button>
 </div>
 ```
-
-### Change detection mechanism
-
-#### Zone.js
 
 Under the hood, Angular uses zone.js by default for change detection, error handling, async tracking.  
 Zone.js notifies Angular about user events, expired timers, etc.  
@@ -60,16 +75,12 @@ When a new event occurs, Angular checks for changes for all components within a 
 
 A zone related to a component hierarchy which connected to a page.
 
-#### Signals
+#### Managing state and changing data with Signals
+
+> Signals has supported since **Angular v16**.
 
 There is another option for updating state. Using **Signals** to notify Angular about value changes and required UI updates.  
-Signals has supported since Angular 16.
-
 A signal is an object that stores a value (any type of value, including nested objects).
-
-Angular manages subscriptions to the signal to get notified about changes. When a change occurs, Angular is then **able to update the part of the UI** that needs updating.
-
-Using Signals in code:
 
 ```ts
 // import
@@ -88,15 +99,23 @@ const name = selectedUser().name;
 const imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 ```
 
-Binding in template:
+Data Binding in template:
 
 ```html
-<div>{{ selectedUser().name }}</div>
+<div>
+  <button (click)="onSelectUser()" > <!-- Event binding -->
+    <img [src]="imagePath()" [alt]="selectedUser().name" /> <!-- Property binding -->
+    <span>{{ selectedUser().name }}</span> <!-- Binding with string interpolation -->
+  </button>
+</div>
 ```
+
+Angular manages subscriptions to the signal to get notified about changes. When a change occurs, Angular is then **able to update the part of the UI** that needs updating.
+![Signals - Trackable data container](images/signals-data-container.png)
 
 ### Component Inputs
 
-Using property decorator to create an input for component:
+Using property decorator to create an input to get data from parent component.
 
 ```ts
 // using required option if it is mandatory to use in the parent template
