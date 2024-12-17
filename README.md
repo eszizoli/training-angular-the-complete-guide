@@ -171,3 +171,18 @@ onSelectUser(id: string) {
 <!-- binding select event of a child component -->
 <app-user ... (select)="onSelectUser($event)" /> <!-- using a special $event object to pass data -->
 ```
+
+#### output function
+
+There is another option for define an output event with output function.
+
+```ts
+// create event with Output decorator
+select = output<string>();
+
+// emit event
+onSelectUser() { this.select.emit(this.id); }
+```
+
+It is not a Signal! The same event will be created as with Output decorator, but with this solution the Output decorator can be omitted.  
+It is recommended to use this then input signal was used.
