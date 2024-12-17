@@ -118,6 +118,7 @@ Angular manages subscriptions to the signal to get notified about changes. When 
 Using property decorator to create an input to get data from parent component.
 
 ```ts
+// create property with Input decorator
 // using required option if it is mandatory to use in the parent template
 @Input({ required: true }) name!: string;
 ```
@@ -137,4 +138,36 @@ Using Signals instead of input decorator:
 name = input.required<string>();
 propertyWithDefaultValue = input('defaultValue');
 optionalProperty = input<number>();
+```
+
+### Component Outputs (events)
+
+Using property decorator to create an output to notify a parent component about changes.
+
+```ts
+// create event with Output decorator
+@Output() select = new EventEmitter();
+
+// emit event
+onSelectUser() {
+  this.select.emit(this.id);
+}
+```
+
+```html
+<button (click)="onSelectUser()"> <!-- binding event handler -->
+```
+
+Add event listener in parent component:
+
+```ts
+// create handler to process event emitted by a child component
+onSelectUser(id: string) {
+    console.log('Selected user with id ' + id);
+  }
+```
+
+```html
+<!-- binding select event of a child component -->
+<app-user ... (select)="onSelectUser($event)" /> <!-- using a special $event object to pass data -->
 ```
