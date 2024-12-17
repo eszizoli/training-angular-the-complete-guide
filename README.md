@@ -253,11 +253,28 @@ import { FormsModule } from '@angular/forms';
   ...
 })
 
-// create a new property for store form data
+// create a new property for store form value
 enteredData = '';
 
 // bind enteredData with ngModel
 <form>
   <input type="text" id="data" name="data" [(ngModel)]="enteredData" />
 </form>
+```
+
+#### Two-Way-Binding with Signals
+
+To use Signals for two-way-binding:
+
+```ts
+// import FormsModule
+import { FormsModule } from '@angular/forms';
+// register FormsModule
+@Component({ imports: [FormsModule], ... })
+
+// create a signal object for store form value
+enteredData = signal('');
+
+// bind enteredData with ngModel
+<input type="text" id="data" name="data" [(ngModel)]="enteredData" />
 ```
