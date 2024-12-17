@@ -190,12 +190,22 @@ It is recommended to use this then input signal was used.
 
 ### Outputting Content
 
-Using **for** to outputting list content (in HTML template):
+Using **@for** to outputting list content (in HTML template):
 
 ```ts
 @for (user of users; track user.id) {
   <li>
     <app-user [user]="user" (select)="onSelectUser($event)" />
   </li>
+}
+```
+
+Using **@if** conditional content (in HTML template):
+
+```ts
+@if (selectedUser) {
+  <app-tasks [name]="selectedUser.name" />
+} @else {
+  <p id="fallback">Select a user to see their tasks!</p>
 }
 ```
