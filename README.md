@@ -304,3 +304,45 @@ import { DatePipe } from '@angular/common';
 // use pipe in template file
 <time>{{ task.dueDate | date: 'fullDate' }}</time>
 ```
+
+### Services and Dependency Injection
+
+It is recommended to use a separate service file to manage data. This solution can help to reduce the input and output parameters.
+
+Recommended service filename convention: `<component-name>.service.ts`, e.g.: `tasks.service.ts`
+
+```ts
+// import
+import { Injectable } from "@angular/core";
+
+// add Injectable decorator
+@Injectable({ providedIn: 'root' })
+// create service class with methods
+export class TasksService {
+  getUserTasks(...) { ... }
+  addTask(...) { ... }
+  ...
+}
+```
+
+Using service in component typescript file:
+
+```ts
+// import
+import { inject, ... } from '@angular/core';
+
+export class NewTaskComponent {
+  ...
+
+  // option a: adding dependency via constructor
+  constructor(private tasksService: TasksService) {}
+
+  // option b: using injection function
+  private tasksService = inject(TasksService);
+
+  // using service
+  onSubmit() {
+    this.tasksService.addTask(...);
+  }
+}
+```
