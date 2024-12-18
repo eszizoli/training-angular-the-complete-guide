@@ -241,40 +241,34 @@ button:active,
 
 ### Using Directives & Two-Way-Binding
 
-Two-Way-Binding with Angular Forms module:
+Two-Way-Binding with Angular Forms:
 
 ```ts
-// import FormsModule
+// import and register FormsModule in typescript file:
 import { FormsModule } from '@angular/forms';
+@Component({ imports: [FormsModule], ... })
 
-// register FormsModule
-@Component({
-  imports: [FormsModule],
-  ...
-})
-
-// create a new property for store form value
+// create properties for form values
 enteredData = '';
+...
 
-// bind enteredData with ngModel
-<form>
-  <input type="text" id="data" name="data" [(ngModel)]="enteredData" />
+// create submit event handler
+onSubmit() {
+  console.log('Submitted data: ' + this.enteredData)
+}
+
+// create Angular form in template file
+<form (ngSubmit)="onSubmit()"> <!-- bind submit event -->
+  <input type="text" id="data" name="data" [(ngModel)]="enteredData" /> <!-- bind form property with ngModel -->
+  ...
 </form>
 ```
 
 #### Two-Way-Binding with Signals
 
-To use Signals for two-way-binding:
+To use Signals for two-way-binding, just use a signal object instead of normal property. All other parts are the same as above.
 
 ```ts
-// import FormsModule
-import { FormsModule } from '@angular/forms';
-// register FormsModule
-@Component({ imports: [FormsModule], ... })
-
 // create a signal object for store form value
 enteredData = signal('');
-
-// bind enteredData with ngModel
-<input type="text" id="data" name="data" [(ngModel)]="enteredData" />
 ```
