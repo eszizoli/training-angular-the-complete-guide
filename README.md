@@ -272,3 +272,21 @@ To use Signals for two-way-binding, just use a signal object instead of normal p
 // create a signal object for store form value
 enteredData = signal('');
 ```
+
+### Content Projection with ng-content
+
+When a component template is used with-in another component as a wrapper, the Angular does not keep the wrapped markup content by default. It will be overwritten by the markup defined used component template.  
+To merge both markup the Angular content projection should be used:
+
+```html
+// create a shared component template
+<div>
+  <ng-content />
+</div>
+
+// use shared component in a child template
+<app-shared-component>
+  <button>Click</button>
+  ...
+</app-shared-component>
+```
