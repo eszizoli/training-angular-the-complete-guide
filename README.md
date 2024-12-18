@@ -19,7 +19,8 @@ Create a new Angular project:
 - Enable Server-Side Rendering (SSR): **No**
 
 Recommended development editor: [Visual Studio Code editor](https://code.visualstudio.com/)  
-Recommended extensions for VSCode: [Angular Essentials](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials)
+Recommended extensions for VSCode: [Angular Essentials](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials)  
+Recommended extensions for debugging: [Angular DevTools](https://chromewebstore.google.com/detail/angular-devtools)
 
 Running the code:
 
