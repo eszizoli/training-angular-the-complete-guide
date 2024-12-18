@@ -290,3 +290,17 @@ To merge both markup the Angular content projection should be used:
   ...
 </app-shared-component>
 ```
+
+### Transforming Template Data with Pipes
+
+With Pipes, the displayed data can be transformed, with which we can format the dates or numbers, or possibly apply a language translation.  
+An example of formatting a date using a built-in date formatter solution:
+
+```ts
+// import and register
+import { DatePipe } from '@angular/common';
+@Component({ imports: [DatePipe], ... })
+
+// use pipe in template file
+<time>{{ task.dueDate | date: 'fullDate' }}</time>
+```
