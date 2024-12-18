@@ -346,3 +346,16 @@ export class NewTaskComponent {
   }
 }
 ```
+
+### Using local storage for data storage
+
+```ts
+// get data from local storage
+const data = localStorage.getItem('tasks');
+
+// parse data
+this.tasks = JSON.parse(data);
+
+// save data, it will be overwrite all data!
+localStorage.setItem('tasks', JSON.stringify(this.tasks));
+```
