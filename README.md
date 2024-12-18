@@ -38,6 +38,21 @@ Running the code:
 Angular uses component base separation. How to connect components together:
 ![How to connect components together](images/understanding-components.png)
 
+**Standalone Components** are the recommended way of building components.  
+In this way all required imports added in the component type script file:
+
+```ts
+@Component({
+  standalone: true,
+  imports: [CardComponent, DatePipe],
+  ...
+})
+```
+
+**Module-based Components** are the previous concept to work with components.  
+Angular Modules make components available to each other.  
+It is required to use a separate `app.module.ts` file to define imports.
+
 ### Data binding and change detection
 
 #### Change detection mechanism by Zone.js
@@ -70,7 +85,7 @@ Data binding in template:
 
 Under the hood, Angular uses zone.js by default for change detection, error handling, async tracking.  
 Zone.js notifies Angular about user events, expired timers, etc.  
-When a new event occurs, Angular checks for changes for all components within a zone in the order of hierarchy levels, from the root app component to the last component.
+When a new event occurs, Angular checks for changes for all components within a zone in the order of hierarchy levels, from the root app component to the last component.  
 ![Change detection](images/change-detection.png)
 
 A zone related to a component hierarchy which connected to a page.
@@ -110,7 +125,7 @@ Data Binding in template:
 </div>
 ```
 
-Angular manages subscriptions to the signal to get notified about changes. When a change occurs, Angular is then **able to update the part of the UI** that needs updating.
+Angular manages subscriptions to the signal to get notified about changes. When a change occurs, Angular is then **able to update the part of the UI** that needs updating.  
 ![Signals - Trackable data container](images/signals-data-container.png)
 
 ### Component Inputs
