@@ -6,6 +6,8 @@ Angular is a frontend JavaScript framework, which helps to building interactive,
 It can simplify the process of building complex, interactive web user interfaces.
 (Declarative coding, separation of concerns via components, OOP concepts and principles.)
 
+- [Angular Components](docs/components.md)
+
 ## Creating an Angular Project
 
 Angular development requires to install **Node.js**: [Download Node.js®](https://nodejs.org/en/download/prebuilt-installer)
